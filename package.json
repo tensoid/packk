@@ -1,0 +1,13 @@
+{
+  "name": "packk",
+  "version": "1.0.0",
+  "main": "packk.js",
+  "bin": "./bin/packk.js",
+  "keywords": [],
+  "author": "tensoid",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "uglify-js": "^3.15.1"
+  }
+}
