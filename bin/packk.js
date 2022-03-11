@@ -37,24 +37,35 @@ function runPackk(filepath){
 
   // Anonymous function begin
   if(packkConfig.anonamyze)
-    finalString += "(() => {\n";  
+    finalString += "(() => {";  
 
   // Fetch and minify source files
   let code = {};
 
   packkConfig.files.forEach(file => {
-    code[file] = fs.readFileSync(file).toString() + "\n";
+    code[file] = fs.readFileSync(file).toString();
   });
 
-  finalString += UglifyJS.minify(code).code;
+  let result = UglifyJS.minify(code, {toplevel: true})
+
+  if(result.error){
+    console.error(result.error);
+    process.exit(1);
+  }
+  if(result.warnings){
+    console.warn(result.warnings);
+  }
+  
+  finalString += result.code;
 
   // Anonymous function end
   if(packkConfig.anonamyze)
-    finalString += "\n})();";
+    finalString += "})();";
 
 
 
   fs.writeFileSync(packkConfig.output, finalString);
+  console.log("Packed successfully into " + packkConfig.output);
 }
 
 
