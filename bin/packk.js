@@ -61,9 +61,9 @@ function checkPackkFileValidity(filepath){
     console.error("Reason: prefix property must be a string");
     process.exit(1);
   }
-  else if(typeof json.anonamyze != "boolean"){
+  else if(typeof json.anonymize != "boolean"){
     console.error(filepath + " is not a valid packk file");
-    console.error("Reason: anonamyze property must be a boolean");
+    console.error("Reason: anonymize property must be a boolean");
     process.exit(1);
   }
 }
@@ -85,7 +85,7 @@ function runPackk(filepath){
     finalString += "/*\n" + packkConfig.prefix + "\n*/\n\n";
 
   // Anonymous function begin
-  if(packkConfig.anonamyze)
+  if(packkConfig.anonymize)
     finalString += "(() => {";  
 
   // Fetch and minify source files
@@ -113,7 +113,7 @@ function runPackk(filepath){
   finalString += result.code;
 
   // Anonymous function end
-  if(packkConfig.anonamyze)
+  if(packkConfig.anonymize)
     finalString += "})();";
 
 

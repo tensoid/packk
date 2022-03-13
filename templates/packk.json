@@ -1,7 +1,7 @@
 {
   "output": "./dist/out.js",
   "prefix": "This will be shown before the source code in the packaged file",
-  "anonamyze": true,
+  "anonymize": true,
   "files": [
     "./src/foo.js",
     "./src/bar.js",
