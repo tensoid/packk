@@ -141,6 +141,11 @@ else if(args[0] == "version"){
   process.exit(1);
 }
 
+else if(args[0] == "usage"){
+  printUsage();
+  process.exit(1);
+}
+
 
 let filepath = args[0];
 
